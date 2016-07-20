@@ -58,7 +58,7 @@ class Payment(models.Model):
         )
 
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, blank=True, null=True,
+        settings.YANDEX_PAYMENT_MODEL, blank=True, null=True,
         verbose_name=u'Пользователь')
     pub_date = models.DateTimeField(u'Время создания', auto_now_add=True)
 
