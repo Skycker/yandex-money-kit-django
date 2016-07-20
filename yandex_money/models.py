@@ -115,9 +115,9 @@ class Payment(models.Model):
     def send_signals(self):
         status = self.status
         if status == self.STATUS.PROCESSED:
-            payment_process.send(sender=self)
+            payment_process.send(sender=self.__class__, instance=self)
         if status == self.STATUS.SUCCESS:
-            payment_completed.send(sender=self)
+            payment_completed.send(sender=self.__class__, instance=self)
 
     @classmethod
     def get_used_shop_ids(cls):
